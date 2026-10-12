@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Playfair Display", "Cormorant Garamond", serif;
+  --font-serif: "Playfair Display", "Cormorant Garamond", "DM Serif Display", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-legal-bg: #F7F6F2;
+  --color-legal-card: #FFFFFF;
+  --color-legal-ink: #171717;
+  --color-legal-muted: #595959;
+  --color-legal-border: #E5E0D8;
+  --color-legal-border-subtle: #ECE8E1;
+  --color-legal-gold: #B8955A;
+  --color-legal-gold-hover: #A38038;
+  --color-legal-gold-soft: #F5EFE4;
+  --color-legal-navy: #121820;
+  --color-legal-dark: #08121D;
+}
+
+:root {
+  --bg: #F7F6F2;
+  --ink: #171717;
+  --ink-secondary: #595959;
+  --line: #E5E0D8;
+  --line-subtle: #EFECE6;
+  --card-bg: #FFFFFF;
+  --gold: #B8955A;
+  --gold-hover: #A38038;
+  --gold-soft: #F5EFE4;
+  --primary-btn: #171717;
+  --primary-btn-text: #FFFFFF;
+}
+
+.dark {
+  --bg: #0B1118;
+  --ink: #F0F2F5;
+  --ink-secondary: #8E98A5;
+  --line: #1D2633;
+  --line-subtle: #161E29;
+  --card-bg: #101823;
+  --gold: #C5A870;
+  --gold-hover: #D4AF37;
+  --gold-soft: rgba(197, 168, 112, 0.12);
+  --primary-btn: #C5A870;
+  --primary-btn-text: #0B1118;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  transition: background-color 0.25s ease, color 0.25s ease;
+  letter-spacing: -0.01em;
+}
+
+/* Legal Serif Typography */
+.font-serif-legal {
+  font-family: "Playfair Display", "Cormorant Garamond", serif;
+  letter-spacing: -0.015em;
+}
+
+.font-display-legal {
+  font-family: "Playfair Display", "DM Serif Display", serif;
+}
+
+/* Luxury Law Firm Cards */
+.legal-card {
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(23, 23, 23, 0.02), 0 4px 14px -3px rgba(23, 23, 23, 0.04);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.legal-card:hover {
+  border-color: rgba(184, 149, 90, 0.45);
+  box-shadow: 0 6px 20px -4px rgba(23, 23, 23, 0.07);
+}
+
+.dark .legal-card:hover {
+  border-color: rgba(197, 168, 112, 0.4);
+  box-shadow: 0 6px 20px -4px rgba(0, 0, 0, 0.35);
+}
+
+/* Legal Document Parchment / Editor */
+.legal-document {
+  background: #FFFFFF;
+  color: #171717;
+  box-shadow: 0 2px 8px -1px rgba(23, 23, 23, 0.04), 0 10px 24px -6px rgba(23, 23, 23, 0.04);
+  border: 1px solid #E5E0D8;
+  border-radius: 10px;
+}
+
+.dark .legal-document {
+  background: #101823;
+  color: #F0F2F5;
+  border: 1px solid #1D2633;
+}
+
+/* Custom Scrollbar - Refined Legal */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(184, 149, 90, 0.3);
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(197, 168, 112, 0.25);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(184, 149, 90, 0.6);
+}
+
+/* Buttons - Luxury Legal Hierarchy */
+.btn-legal-primary {
+  background-color: #171717;
+  color: #FFFFFF;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  border: 1px solid #171717;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(23, 23, 23, 0.08);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-legal-primary:hover {
+  background-color: #262626;
+  border-color: #262626;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(23, 23, 23, 0.15);
+}
+
+.dark .btn-legal-primary {
+  background-color: #C5A870;
+  color: #0B1118;
+  border-color: #C5A870;
+  font-weight: 600;
+}
+
+.dark .btn-legal-primary:hover {
+  background-color: #D4AF37;
+  border-color: #D4AF37;
+  box-shadow: 0 4px 14px rgba(197, 168, 112, 0.25);
+}
+
+.btn-legal-gold {
+  background-color: #B8955A;
+  color: #FFFFFF;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: 1px solid #A38038;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(23, 23, 23, 0.05);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-legal-gold:hover {
+  background-color: #A38038;
+  border-color: #8C6A28;
+  color: #FFFFFF;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(184, 149, 90, 0.25);
+}
+
+.dark .btn-legal-gold {
+  background-color: #C5A870;
+  color: #08121D;
+  border: 1px solid #C5A870;
+}
+
+.dark .btn-legal-gold:hover {
+  background-color: #D4AF37;
+  border-color: #D4AF37;
+  color: #08121D;
+  box-shadow: 0 4px 12px rgba(197, 168, 112, 0.25);
+}
+
+.btn-legal-secondary {
+  background-color: #FFFFFF;
+  color: #171717;
+  border: 1px solid #E5E0D8;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-legal-secondary:hover {
+  background-color: #F7F6F2;
+  border-color: #B8955A;
+  color: #171717;
+}
+
+.dark .btn-legal-secondary {
+  background-color: #101823;
+  color: #F0F2F5;
+  border: 1px solid #1D2633;
+}
+
+.dark .btn-legal-secondary:hover {
+  background-color: #162232;
+  border-color: rgba(197, 168, 112, 0.5);
+  color: #C5A870;
+}

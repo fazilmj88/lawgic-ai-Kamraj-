@@ -1,0 +1,11 @@
+{
+  "name": "FINAL LAWGIC AI (nandha)",
+  "description": "A premium AI-powered legal intelligence platform for law enforcement, providing automated FIR drafting, deep legal analysis, and incident timeline reconstruction.",
+  "requestFramePermissions": [
+    "microphone",
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

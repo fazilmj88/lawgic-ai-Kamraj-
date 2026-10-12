@@ -1,0 +1,488 @@
+[
+  {
+    "role": "POLICE_IO",
+    "category": "CASE",
+    "action": "View authorized case (Case A)",
+    "expected": "ALLOW (200 / row returned)",
+    "actual": "ALLOWED (Case retrieved)",
+    "result": "PASS",
+    "details": "Query status: OK"
+  },
+  {
+    "role": "POLICE_IO",
+    "category": "CASE",
+    "action": "Create new case",
+    "expected": "ALLOW (Case created in DB)",
+    "actual": "ALLOWED (Case created)",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "POLICE_IO",
+    "category": "CASE",
+    "action": "Edit investigation case information",
+    "expected": "ALLOW (Update applied)",
+    "actual": "ALLOWED (Updated)",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "POLICE_IO",
+    "category": "CASE",
+    "action": "Delete case",
+    "expected": "DENY (Only Admin / Court order)",
+    "actual": "DENIED (Permission Denied: Case deletion restricted to Admin / Court order clearance)",
+    "result": "PASS",
+    "details": "Police officers should not delete official case records without supervisor/admin clearance."
+  },
+  {
+    "role": "POLICE_IO",
+    "category": "FIR",
+    "action": "View FIR",
+    "expected": "ALLOW",
+    "actual": "ALLOWED",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "POLICE_IO",
+    "category": "FIR",
+    "action": "Create / Upload FIR",
+    "expected": "ALLOW",
+    "actual": "ALLOWED",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "POLICE_IO",
+    "category": "FIR",
+    "action": "Edit FIR draft",
+    "expected": "ALLOW",
+    "actual": "ALLOWED",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "POLICE_IO",
+    "category": "FIR",
+    "action": "Generate FIR PDF (/api/fir/generate)",
+    "expected": "ALLOW (PDF generated 200)",
+    "actual": "ALLOWED (200 PDF returned)",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "POLICE_IO",
+    "category": "FIR",
+    "action": "Delete FIR document",
+    "expected": "DENY (FIR records must be immutable/permanent)",
+    "actual": "DENIED (Permission Denied: Original FIR records are permanent statutory documents and cannot be deleted)",
+    "result": "PASS",
+    "details": "Original FIR records in CCTNS/police database must be non-deletable."
+  },
+  {
+    "role": "POLICE_IO",
+    "category": "DOCUMENTS",
+    "action": "Upload victim / witness statement",
+    "expected": "ALLOW",
+    "actual": "ALLOWED",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "POLICE_IO",
+    "category": "STORAGE",
+    "action": "Upload to Supabase Storage case-documents",
+    "expected": "ALLOW",
+    "actual": "ALLOWED",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "POLICE_IO",
+    "category": "STORAGE",
+    "action": "Download authorized case document",
+    "expected": "ALLOW",
+    "actual": "ALLOWED",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "POLICE_IO",
+    "category": "DOCUMENTS",
+    "action": "Create document version",
+    "expected": "ALLOW",
+    "actual": "ALLOWED",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "POLICE_IO",
+    "category": "AI",
+    "action": "Use AI Complaint Analysis (/api/ai/analyze-complaint)",
+    "expected": "ALLOW (200)",
+    "actual": "ALLOWED (200)",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "POLICE_IO",
+    "category": "AI",
+    "action": "Use AI Document Search / RAG",
+    "expected": "ALLOW (200)",
+    "actual": "ALLOWED (200)",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "POLICE_IO",
+    "category": "CHAIN_OF_CUSTODY",
+    "action": "Add chain of custody event",
+    "expected": "ALLOW",
+    "actual": "ALLOWED",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "POLICE_IO",
+    "category": "CHAIN_OF_CUSTODY",
+    "action": "Modify existing chain of custody event",
+    "expected": "DENY (Chain of custody is tamper-evident immutable)",
+    "actual": "DENIED (Permission Denied: Chain of custody events are strictly immutable)",
+    "result": "PASS",
+    "details": "Chain of custody events must be strictly append-only."
+  },
+  {
+    "role": "POLICE_IO",
+    "category": "AUDIT",
+    "action": "Modify audit logs",
+    "expected": "DENY",
+    "actual": "DENIED (Permission Denied: Audit logs are tamper-evident and immutable (UPDATE rejected))",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "POLICE_IO",
+    "category": "AUDIT",
+    "action": "Delete audit logs",
+    "expected": "DENY",
+    "actual": "DENIED (Permission Denied: Audit logs are append-only; deletion is rejected even for Admin)",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "POLICE_IO",
+    "category": "USER_MANAGEMENT",
+    "action": "Self-elevate role to Admin",
+    "expected": "DENY",
+    "actual": "DENIED (Permission Denied: Only Administrator can assign or modify user roles)",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "FORENSIC",
+    "category": "FIR",
+    "action": "Attempt FIR edit / modification (CRITICAL TEST)",
+    "expected": "DENY (403 / RLS Permission Denied)",
+    "actual": "DENIED (Permission Denied: Forensic officers cannot modify FIR or witness statements)",
+    "result": "PASS",
+    "details": "Forensic officers must NOT be able to modify police FIR records."
+  },
+  {
+    "role": "FORENSIC",
+    "category": "FIR",
+    "action": "Create / Register FIR",
+    "expected": "DENY (Only Police / IO can create FIR)",
+    "actual": "DENIED (Permission Denied: Forensic officers cannot create FIR records)",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "FORENSIC",
+    "category": "DOCUMENTS",
+    "action": "Modify witness / victim statement",
+    "expected": "DENY",
+    "actual": "DENIED (Permission Denied: Forensic officers cannot modify FIR or witness statements)",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "FORENSIC",
+    "category": "FORENSIC_REPORT",
+    "action": "Upload forensic report",
+    "expected": "ALLOW",
+    "actual": "ALLOWED",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "FORENSIC",
+    "category": "FORENSIC_REPORT",
+    "action": "Update own forensic report / add observations",
+    "expected": "ALLOW",
+    "actual": "ALLOWED",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "FORENSIC",
+    "category": "FORENSIC_REPORT",
+    "action": "Create new version of forensic report",
+    "expected": "ALLOW",
+    "actual": "ALLOWED",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "FORENSIC",
+    "category": "EVIDENCE",
+    "action": "Delete investigation evidence / documents",
+    "expected": "DENY",
+    "actual": "DENIED (Permission Denied: Forensic officers cannot delete police investigation documents)",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "LEGAL",
+    "category": "DOCUMENTS",
+    "action": "View authorized case documents (FIR, evidence, forensic)",
+    "expected": "ALLOW",
+    "actual": "ALLOWED (8 docs)",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "LEGAL",
+    "category": "LEGAL_DOCUMENTS",
+    "action": "Upload prosecution / legal scrutiny document",
+    "expected": "ALLOW",
+    "actual": "ALLOWED",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "LEGAL",
+    "category": "AI",
+    "action": "Use Legal Precedent Search (/api/ai/legal-search)",
+    "expected": "ALLOW (200)",
+    "actual": "ALLOWED (200)",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "LEGAL",
+    "category": "FIR",
+    "action": "Alter original FIR facts / document",
+    "expected": "DENY",
+    "actual": "DENIED (Permission Denied: Legal officers cannot alter original FIR facts or witness statements)",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "LEGAL",
+    "category": "DOCUMENTS",
+    "action": "Delete police investigation records",
+    "expected": "DENY",
+    "actual": "DENIED (Permission Denied: Prosecution counsel cannot delete police investigation records)",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "JUDICIAL",
+    "category": "CASE",
+    "action": "Direct INSERT into cases table (CRITICAL TEST)",
+    "expected": "DENY (403 / RLS Permission Denied)",
+    "actual": "DENIED (Permission Denied: Judicial users have read-only access to cases)",
+    "result": "PASS",
+    "details": "Judicial role is strictly READ-ONLY."
+  },
+  {
+    "role": "JUDICIAL",
+    "category": "CASE",
+    "action": "Direct UPDATE on cases table (CRITICAL TEST)",
+    "expected": "DENY (403 / RLS Permission Denied)",
+    "actual": "DENIED (Permission Denied: Judicial users cannot modify case details)",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "JUDICIAL",
+    "category": "CASE",
+    "action": "Direct DELETE on cases table (CRITICAL TEST)",
+    "expected": "DENY (403 / RLS Permission Denied)",
+    "actual": "DENIED (Permission Denied: Case deletion restricted to Admin / Court order clearance)",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "JUDICIAL",
+    "category": "DOCUMENTS",
+    "action": "Direct INSERT into case_documents (CRITICAL TEST)",
+    "expected": "DENY (403 / RLS Permission Denied)",
+    "actual": "DENIED (Permission Denied: Judicial users cannot create case documents)",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "JUDICIAL",
+    "category": "STORAGE",
+    "action": "Direct upload to Supabase Storage",
+    "expected": "DENY (403 / Storage RLS violation)",
+    "actual": "DENIED (Permission Denied: Judicial users cannot upload or modify files in storage)",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "JUDICIAL",
+    "category": "DOCUMENTS",
+    "action": "View finalized court submitted document",
+    "expected": "ALLOW",
+    "actual": "ALLOWED",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "ADMIN",
+    "category": "AUDIT",
+    "action": "View system audit logs",
+    "expected": "ALLOW",
+    "actual": "ALLOWED (5 logs)",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "ADMIN",
+    "category": "USER_MANAGEMENT",
+    "action": "View user profiles",
+    "expected": "ALLOW",
+    "actual": "ALLOWED (10 profiles)",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "ADMIN",
+    "category": "USER_MANAGEMENT",
+    "action": "Assign / update user role",
+    "expected": "ALLOW",
+    "actual": "ALLOWED",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "ADMIN",
+    "category": "FIR",
+    "action": "Modify FIR facts without authorized case assignment",
+    "expected": "DENY (Admin is system administrator, not investigating officer)",
+    "actual": "DENIED (Permission Denied: System Admin is not Investigating Officer; cannot tamper with FIR facts)",
+    "result": "PASS",
+    "details": "System Admin is NOT Investigating Officer; cannot tamper with FIR facts."
+  },
+  {
+    "role": "ADMIN",
+    "category": "AUDIT",
+    "action": "Delete or tamper with audit history",
+    "expected": "DENY (Audit log must be immutable and append-only even for Admin)",
+    "actual": "DENIED (Permission Denied: Audit logs are append-only; deletion is rejected even for Admin)",
+    "result": "PASS",
+    "details": "Audit logs must be write-only / append-only; deletion must be rejected."
+  },
+  {
+    "role": "FORENSIC",
+    "category": "CASE_LEVEL",
+    "action": "Forensic-1 accessing unassigned Case B",
+    "expected": "DENY (Forensic-1 is only assigned to Case A, must NOT see Case B)",
+    "actual": "DENIED (Case B isolated)",
+    "result": "PASS",
+    "details": "Forensic officer should only access assigned/requisitioned cases."
+  },
+  {
+    "role": "FORENSIC",
+    "category": "CASE_LEVEL",
+    "action": "Forensic-1 accessing Case B documents",
+    "expected": "DENY",
+    "actual": "DENIED (Documents protected)",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "POLICE_IO",
+    "category": "CASE_LEVEL",
+    "action": "IO-1 accessing IO-2 unassigned Case B documents",
+    "expected": "DENY / WARNING (Case-level assignment check)",
+    "actual": "DENIED (Restricted to assigned)",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "JUDICIAL",
+    "category": "CASE_LEVEL",
+    "action": "Judicial viewing internal draft witness statement (not finalized for court)",
+    "expected": "DENY (Judicial user must only see finalized court-submitted documents)",
+    "actual": "DENIED",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "POLICE_IO",
+    "category": "AUDIT",
+    "action": "Record allowed action in audit logs",
+    "expected": "ALLOW (Audit row created)",
+    "actual": "ALLOWED",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "POLICE_IO",
+    "category": "AUDIT",
+    "action": "Direct UPDATE on audit_logs table",
+    "expected": "DENY (Audit must be immutable)",
+    "actual": "DENIED (Permission Denied: Audit logs are tamper-evident and immutable (UPDATE rejected))",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "POLICE_IO",
+    "category": "AUDIT",
+    "action": "Direct DELETE on audit_logs table",
+    "expected": "DENY (Audit must be permanent)",
+    "actual": "DENIED (Permission Denied: Audit logs are append-only; deletion is rejected even for Admin)",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "UNAUTHENTICATED",
+    "category": "BACKEND_API",
+    "action": "Call requireAuth endpoint without token (/api/auth/verify)",
+    "expected": "DENY (401 Unauthorized)",
+    "actual": "DENIED (401 Unauthorized)",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "role": "JUDICIAL",
+    "category": "BACKEND_API",
+    "action": "Direct call to /api/fir/generate by Judicial user",
+    "expected": "DENY (403 Forbidden)",
+    "actual": "DENIED (403)",
+    "result": "PASS",
+    "details": "Judicial role should not be authorized to invoke FIR generation endpoints."
+  },
+  {
+    "role": "FORENSIC",
+    "category": "BACKEND_API",
+    "action": "Direct call to /api/fir/generate by Forensic officer",
+    "expected": "DENY (403 Forbidden)",
+    "actual": "DENIED (403)",
+    "result": "PASS",
+    "details": "Forensic officer should not generate police FIRs."
+  },
+  {
+    "role": "JUDICIAL",
+    "category": "BACKEND_API",
+    "action": "Direct call to DELETE /api/documents/:id by Judicial user",
+    "expected": "DENY (403 Forbidden)",
+    "actual": "DENIED (403)",
+    "result": "PASS",
+    "details": ""
+  }
+]

@@ -1,0 +1,78 @@
+[
+  {
+    "id": "EVID-CCTV-SAMPLE-LAW202600125",
+    "caseId": "LAW-2026-00125",
+    "fileName": "CAM04_Market_Junction_Surveillance.mp4",
+    "fileSize": 271747,
+    "mimeType": "video/mp4",
+    "storagePath": "LAW-2026-00125/evidence/cctv/EVID-CCTV-SAMPLE-LAW202600125/CAM04_Market_Junction_Surveillance.mp4",
+    "videoDuration": 15,
+    "formattedDuration": "00:00:15",
+    "sha256Hash": "4343d04ed7c98931f5313be6a469f0e56499a05f6b60e337f20b1fd2ae772cd7",
+    "uploadedBy": "Constable Murugan K",
+    "uploaderRole": "Constable",
+    "uploadedAt": "2026-09-14T16:57:51.733Z",
+    "processingStatus": "Uploaded",
+    "analysisStatus": "Pending Analysis",
+    "streamUrl": "/api/cctv/stream/EVID-CCTV-SAMPLE-LAW202600125",
+    "videoUrl": "/api/cctv/stream/EVID-CCTV-SAMPLE-LAW202600125",
+    "metadata": {
+      "fps": 25,
+      "width": 1280,
+      "height": 720,
+      "codec": "h264",
+      "bitrate": "145 kbps",
+      "hasAudio": false,
+      "ffmpegUsed": true
+    },
+    "chainOfCustody": [
+      {
+        "id": "custody-1789405071733-sample",
+        "timestamp": "2026-09-14T16:57:51.733Z",
+        "action": "CCTV Evidence Uploaded",
+        "actor": "Constable Murugan K",
+        "actorRole": "Constable",
+        "details": "Official surveillance extract 'CAM04_Market_Junction_Surveillance.mp4' received from Traffic Control Room. Cryptographic SHA-256: 4343d04ed7c98931f5313be6a469f0e56499a05f6b60e337f20b1fd2ae772cd7",
+        "hash": "4343d04ed7c98931f5313be6a469f0e56499a05f6b60e337f20b1fd2ae772cd7"
+      }
+    ]
+  },
+  {
+    "id": "EVID-CCTV-1789405090751-0HMP",
+    "caseId": "LAW-2026-00125",
+    "fileName": "test_upload_cam01.mp4",
+    "fileSize": 178266,
+    "mimeType": "video/mp4",
+    "storagePath": "LAW-2026-00125/evidence/cctv/EVID-CCTV-1789405090751-0HMP/test_upload_cam01.mp4",
+    "videoDuration": 15,
+    "formattedDuration": "00:00:15",
+    "sha256Hash": "a0e50a4c80a9323cfeb9d2dd4412f8d12a15459a4913a4e8cd50a7b3f224ae8e",
+    "uploadedBy": "Constable Murugan K",
+    "uploaderRole": "Constable",
+    "uploadedAt": "2026-09-14T16:58:10.839Z",
+    "processingStatus": "Uploaded",
+    "analysisStatus": "Pending Analysis",
+    "streamUrl": "/api/cctv/stream/EVID-CCTV-1789405090751-0HMP",
+    "videoUrl": "/api/cctv/stream/EVID-CCTV-1789405090751-0HMP",
+    "metadata": {
+      "fps": 25,
+      "width": 1280,
+      "height": 720,
+      "codec": "h264",
+      "bitrate": "96 kbps",
+      "hasAudio": false,
+      "ffmpegUsed": true
+    },
+    "chainOfCustody": [
+      {
+        "id": "custody-1789405090839-1",
+        "timestamp": "2026-09-14T16:58:10.839Z",
+        "action": "CCTV Evidence Uploaded",
+        "actor": "Constable Murugan K",
+        "actorRole": "Constable",
+        "details": "Original CCTV file 'test_upload_cam01.mp4' securely registered. Cryptographic SHA-256: a0e50a4c80a9323cfeb9d2dd4412f8d12a15459a4913a4e8cd50a7b3f224ae8e. Duration: 00:00:15.",
+        "hash": "a0e50a4c80a9323cfeb9d2dd4412f8d12a15459a4913a4e8cd50a7b3f224ae8e"
+      }
+    ]
+  }
+]
