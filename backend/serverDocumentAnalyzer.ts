@@ -18,7 +18,7 @@ function getGemini(): GoogleGenAI {
       apiKey: apiKey || '',
       httpOptions: {
         headers: {
-          'User-Agent': 'aistudio-build-doc-intelligence',
+          'User-Agent': 'development-environment-doc-intelligence',
         },
       },
     });

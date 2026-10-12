@@ -175,7 +175,7 @@ function getGemini(): GoogleGenAI {
       apiKey: apiKey || "",
       httpOptions: {
         headers: {
-          'User-Agent': 'aistudio-build',
+          'User-Agent': 'development-environment-build',
         }
       }
     });

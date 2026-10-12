@@ -16,7 +16,7 @@ export default defineConfig({
   },
   server: {
     port: 5173,
-    // HMR is disabled in AI Studio via DISABLE_HMR env var.
+    // HMR is disabled in Development Environment via DISABLE_HMR env var.
     hmr: process.env.DISABLE_HMR !== 'true',
     proxy: {
       '/api': {

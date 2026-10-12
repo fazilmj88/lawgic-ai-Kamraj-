@@ -10,7 +10,7 @@ function getGemini(): GoogleGenAI {
       apiKey: apiKey || '',
       httpOptions: {
         headers: {
-          'User-Agent': 'aistudio-build-cross-doc-intelligence',
+          'User-Agent': 'development-environment-cross-doc-intelligence',
         },
       },
     });
